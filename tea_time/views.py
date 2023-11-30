@@ -4,20 +4,13 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-# Customer Import Suite
-from .models import Customer
-from .serializers import CustomerSerializer
-# Subscription Import Suite
-from .models import Subscription
-from .serializers import SubscriptionSerializer
-# Tea Import Suite
-from .models import Tea
-from .serializers import TeaSerializer
+from .models import Customer, Subscription, Tea
+from .serializers import CustomerSerializer, SubscriptionSerializer, TeaSerializer
 
 
 # Customer CRUD Functions
 @api_view(['GET', 'POST'])
-def customer_list(request):
+def customer_list(request, format=None):
   if request.method == 'GET':
     customers = Customer.objects.all()
     serializer = CustomerSerializer(customers, many = True)
@@ -30,7 +23,7 @@ def customer_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 @api_view(['GET', 'PUT', 'DELETE'])
-def customer_detail(request, id):
+def customer_detail(request, id, format=None):
   try:
     customer = Customer.objects.get(pk=id)
   except Customer.DoesNotExist:
@@ -54,7 +47,7 @@ def customer_detail(request, id):
 
 # Subscription CRUD Functions
 @api_view(['GET', 'POST'])
-def subscription_list(request):
+def subscription_list(request, format=None):
   if request.method == 'GET':
     subscriptions = Subscription.objects.all()
     serializer = SubscriptionSerializer(subscriptions, many = True)
@@ -67,7 +60,7 @@ def subscription_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 @api_view(['GET', 'PUT', 'DELETE'])
-def subscription_detail(request, id):
+def subscription_detail(request, id, format=None):
   try:
     subscription = subscription.objects.get(pk=id)
   except subscription.DoesNotExist:
@@ -91,7 +84,7 @@ def subscription_detail(request, id):
 
 # Tea CRUD Functions
 @api_view(['GET', 'POST'])
-def tea_list(request):
+def tea_list(request, format=None):
   if request.method == 'GET':
     teas = Tea.objects.all()
     serializer = TeaSerializer(teas, many = True)
@@ -104,7 +97,7 @@ def tea_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 @api_view(['GET', 'PUT', 'DELETE'])
-def tea_detail(request, id):
+def tea_detail(request, id, format=None):
   try:
     tea = tea.objects.get(pk=id)
   except tea.DoesNotExist:

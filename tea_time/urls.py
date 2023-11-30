@@ -19,7 +19,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from tea_time import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('customers/', views.customer_list),
+    path('customers/<int:id>', views.customer_detail),
+    path('subscriptions/', views.subscription_list),
+    path('subscriptions/<int:id>', views.subscription_detail),
+    path('teas/', views.tea_list),
+    path('teas/<int:id>', views.tea_detail)
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
