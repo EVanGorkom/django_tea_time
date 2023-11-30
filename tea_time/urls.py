@@ -1,3 +1,6 @@
+# The urls file is like the config/routes file in a rails app
+
+
 """
 URL configuration for tea_time project.
 
