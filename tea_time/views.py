@@ -16,7 +16,7 @@ def customer_list(request, format=None):
     serializer = CustomerSerializer(customers, many = True)
     return Response(serializer.data)
   
-  if request.method == 'POST':
+  elif request.method == 'POST':
     serializer = CustomerSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
@@ -53,7 +53,7 @@ def subscription_list(request, format=None):
     serializer = SubscriptionSerializer(subscriptions, many = True)
     return Response(serializer.data)
   
-  if request.method == 'POST':
+  elif request.method == 'POST':
     serializer = SubscriptionSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
@@ -90,7 +90,7 @@ def tea_list(request, format=None):
     serializer = TeaSerializer(teas, many = True)
     return Response(serializer.data)
   
-  if request.method == 'POST':
+  elif request.method == 'POST':
     serializer = TeaSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
