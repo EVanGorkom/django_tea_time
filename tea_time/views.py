@@ -62,7 +62,7 @@ def subscription_list(request, format=None):
 @api_view(['GET', 'PUT', 'DELETE'])
 def subscription_detail(request, id, format=None):
   try:
-    subscription = subscription.objects.get(pk=id)
+    subscription = Subscription.objects.get(pk=id)
   except subscription.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
   
@@ -99,7 +99,7 @@ def tea_list(request, format=None):
 @api_view(['GET', 'PUT', 'DELETE'])
 def tea_detail(request, id, format=None):
   try:
-    tea = tea.objects.get(pk=id)
+    tea = Tea.objects.get(pk=id)
   except tea.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
   

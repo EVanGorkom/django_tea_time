@@ -16,4 +16,4 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 class TeaSerializer(serializers.ModelSerializer):
   class Meta:
     model = Tea
-    fields = ['id', 'title', 'description', 'temperature', 'brew_time']
+    fields = ['id', 'title', 'description', 'temperature', 'subscriptions', 'brew_time']
